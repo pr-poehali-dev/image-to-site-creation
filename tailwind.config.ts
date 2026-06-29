@@ -24,10 +24,11 @@ export default {
 			},
 			colors: {
 				brand: {
-					DEFAULT: '#FFB800',
-					orange: '#FF7A00',
-					dark: '#0F1117',
-					navy: '#1A1D29',
+					DEFAULT: '#F5C400',
+					orange: '#F5C400',
+					dark: '#2B2B2B',
+					navy: '#1E1E1E',
+					graphite: '#3A3A3A',
 				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

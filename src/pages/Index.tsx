@@ -102,29 +102,29 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white text-brand-dark font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-background text-brand-dark font-sans overflow-x-hidden">
       {/* HEADER */}
       <header className="sticky top-0 z-50 glass border-b border-black/5">
         <div className="container mx-auto flex items-center justify-between py-4">
           <a href="#" className="flex flex-col leading-none">
             <span className="font-display font-extrabold text-xl tracking-tight">
-              PRO<span className="text-brand-orange">ximum</span>
+              PRO<span className="text-brand">ximum</span>
             </span>
             <span className="text-[10px] text-muted-foreground tracking-wide">Цифровизация вашего бизнеса</span>
           </a>
           <nav className="hidden lg:flex items-center gap-7">
             {nav.map((n) => (
-              <a key={n.label} href={n.href} className="text-sm font-medium hover:text-brand-orange transition-colors">
+              <a key={n.label} href={n.href} className="text-sm font-medium hover:text-brand transition-colors">
                 {n.label}
               </a>
             ))}
           </nav>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
-              <Icon name="Phone" size={16} className="text-brand-orange" />
+              <Icon name="Phone" size={16} className="text-brand" />
               <span className="font-display font-bold text-sm">+7 (999) 123-45-67</span>
             </div>
-            <Button className="rounded-full bg-gradient-to-r from-brand-orange to-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
+            <Button className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
               Обсудить проект
             </Button>
           </div>
@@ -133,7 +133,7 @@ const Index = () => {
 
       {/* HERO */}
       <section className="relative grid-pattern">
-        <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-bl from-brand/20 via-brand-orange/10 to-transparent blur-3xl" />
+        <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-bl from-brand/20 via-brand/10 to-transparent blur-3xl" />
         <div className="container mx-auto relative grid lg:grid-cols-2 gap-10 items-center py-16 lg:py-24">
           <div className="animate-fade-in">
             <h1 className="font-display font-extrabold text-4xl md:text-6xl leading-[1.05]">
@@ -144,7 +144,7 @@ const Index = () => {
               Автоматизируем бизнес-процессы, создаём новые возможности и дорабатываем любые конфигурации 1С.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full bg-gradient-to-r from-brand-orange to-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90 hover-lift">
+              <Button size="lg" className="rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90 hover-lift">
                 Обсудить проект <Icon name="ArrowRight" size={18} className="ml-1" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full border-2 font-semibold text-base px-8" asChild>
@@ -154,24 +154,24 @@ const Index = () => {
             <div className="mt-8 flex flex-wrap gap-3">
               {tags.map((t) => (
                 <span key={t} className="flex items-center gap-1.5 bg-white border border-black/5 rounded-full px-4 py-1.5 text-sm font-medium shadow-sm">
-                  <Icon name="Check" size={14} className="text-brand-orange" /> {t}
+                  <Icon name="Check" size={14} className="text-brand" /> {t}
                 </span>
               ))}
             </div>
           </div>
           <div className="relative animate-scale-in">
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-orange/30 to-brand/30 blur-3xl rounded-full" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand/30 to-brand/30 blur-3xl rounded-full" />
             <img src={HERO_IMG} alt="1С решения" className="relative rounded-3xl shadow-2xl animate-float" />
           </div>
         </div>
       </section>
 
       {/* ADVANTAGES BAR */}
-      <section className="bg-gradient-to-r from-brand-dark to-brand-navy text-white">
+      <section className="bg-brand-dark text-white">
         <div className="container mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 py-8">
           {advantages.map((a) => (
             <div key={a.title} className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-orange to-brand flex items-center justify-center shrink-0">
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center shrink-0">
                 <Icon name={a.icon} size={20} className="text-brand-dark" />
               </div>
               <span className="text-sm font-medium leading-tight">{a.title}</span>
@@ -183,11 +183,11 @@ const Index = () => {
       {/* ABOUT */}
       <section id="about" className="container mx-auto py-20 grid lg:grid-cols-2 gap-12 items-center">
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-brand-orange/20 blur-3xl rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-brand-graphite/20 blur-3xl rounded-full" />
           <img src={ABOUT_IMG} alt="О компании" className="relative rounded-3xl shadow-xl" />
         </div>
         <div>
-          <span className="text-brand-orange font-display font-bold text-sm tracking-widest uppercase">О компании</span>
+          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">О компании</span>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">
             Мы любим сложные задачи в <span className="gradient-text">1С</span>
           </h2>
@@ -203,17 +203,17 @@ const Index = () => {
       {/* SERVICES */}
       <section id="services" className="bg-muted/40">
         <div className="container mx-auto py-20">
-          <span className="text-brand-orange font-display font-bold text-sm tracking-widest uppercase">Наши услуги</span>
+          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши услуги</span>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3 mb-12">Что мы умеем</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
               <div key={s.title} className="group bg-white rounded-2xl p-7 border border-black/5 hover-lift cursor-pointer">
-                <div className="w-13 h-13 w-14 h-14 rounded-2xl bg-gradient-to-br from-brand/20 to-brand-orange/20 flex items-center justify-center group-hover:from-brand-orange group-hover:to-brand transition-all">
-                  <Icon name={s.icon} size={26} className="text-brand-orange group-hover:text-brand-dark transition-colors" />
+                <div className="w-13 h-13 w-14 h-14 rounded-2xl bg-gradient-to-br from-brand/20 to-brand-graphite/20 flex items-center justify-center group-hover:from-brand group-hover:to-brand transition-all">
+                  <Icon name={s.icon} size={26} className="text-brand group-hover:text-brand-dark transition-colors" />
                 </div>
                 <h3 className="font-display font-bold text-xl mt-5">{s.title}</h3>
                 <p className="text-muted-foreground mt-2">{s.text}</p>
-                <span className="inline-flex items-center gap-1 text-brand-orange font-semibold text-sm mt-5 group-hover:gap-2 transition-all">
+                <span className="inline-flex items-center gap-1 text-brand font-semibold text-sm mt-5 group-hover:gap-2 transition-all">
                   Подробнее <Icon name="ArrowRight" size={15} />
                 </span>
               </div>
@@ -226,17 +226,17 @@ const Index = () => {
       <section id="solutions" className="container mx-auto py-20">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <span className="text-brand-orange font-display font-bold text-sm tracking-widest uppercase">Наши решения</span>
+            <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши решения</span>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Готовые продукты</h2>
           </div>
-          <a href="#" className="hidden sm:inline-flex items-center gap-1 text-brand-orange font-semibold">
+          <a href="#" className="hidden sm:inline-flex items-center gap-1 text-brand font-semibold">
             Все решения <Icon name="ArrowRight" size={16} />
           </a>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {solutions.map((s) => (
             <div key={s.title} className="bg-white rounded-2xl p-6 border border-black/5 hover-lift">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-orange to-brand flex items-center justify-center mb-5">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center mb-5">
                 <Icon name={s.icon} size={22} className="text-brand-dark" />
               </div>
               <h3 className="font-display font-bold text-lg leading-tight">{s.title}</h3>
@@ -247,14 +247,14 @@ const Index = () => {
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="bg-gradient-to-br from-brand-dark to-brand-navy text-white">
+      <section id="portfolio" className="bg-brand-dark text-white">
         <div className="container mx-auto py-20">
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Портфолио</span>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3 mb-12">Реализованные проекты</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {portfolio.map((p) => (
               <div key={p.title} className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-colors backdrop-blur-sm">
-                <span className="inline-block bg-gradient-to-r from-brand-orange to-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full">
+                <span className="inline-block bg-gradient-to-r from-brand to-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full">
                   {p.tag}
                 </span>
                 <h3 className="font-display font-bold text-xl mt-5">{p.title}</h3>
@@ -267,12 +267,12 @@ const Index = () => {
 
       {/* WHY US */}
       <section className="container mx-auto py-20">
-        <span className="text-brand-orange font-display font-bold text-sm tracking-widest uppercase">Почему выбирают нас</span>
+        <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Почему выбирают нас</span>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {why.map((w) => (
             <div key={w.title} className="flex gap-4">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand/15 to-brand-orange/15 flex items-center justify-center shrink-0">
-                <Icon name={w.icon} size={20} className="text-brand-orange" />
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand/15 to-brand-graphite/15 flex items-center justify-center shrink-0">
+                <Icon name={w.icon} size={20} className="text-brand" />
               </div>
               <div>
                 <h3 className="font-display font-bold">{w.title}</h3>
@@ -286,11 +286,11 @@ const Index = () => {
       {/* STEPS */}
       <section className="bg-muted/40">
         <div className="container mx-auto py-20">
-          <span className="text-brand-orange font-display font-bold text-sm tracking-widest uppercase">Как мы работаем</span>
+          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Как мы работаем</span>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-10">
             {steps.map((s) => (
               <div key={s.n} className="relative">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-orange to-brand flex items-center justify-center font-display font-extrabold text-brand-dark text-lg mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand flex items-center justify-center font-display font-extrabold text-brand-dark text-lg mb-4">
                   {s.n}
                 </div>
                 <h3 className="font-display font-bold">{s.title}</h3>
@@ -304,16 +304,16 @@ const Index = () => {
       {/* BLOG + CONTACT FORM */}
       <section id="blog" className="container mx-auto py-20 grid lg:grid-cols-2 gap-12">
         <div>
-          <span className="text-brand-orange font-display font-bold text-sm tracking-widest uppercase">Блог</span>
+          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Блог</span>
           <h2 className="font-display font-extrabold text-3xl mt-3 mb-8">Полезные статьи</h2>
           <div className="space-y-4">
             {blog.map((b) => (
               <a key={b.title} href="#" className="flex items-center gap-5 bg-white border border-black/5 rounded-2xl p-5 hover-lift">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand-orange to-brand flex items-center justify-center shrink-0">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center shrink-0">
                   <Icon name="FileText" size={26} className="text-brand-dark" />
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-brand-orange">{b.tag}</span>
+                  <span className="text-xs font-semibold text-brand">{b.tag}</span>
                   <h3 className="font-display font-bold leading-tight">{b.title}</h3>
                 </div>
               </a>
@@ -322,13 +322,13 @@ const Index = () => {
         </div>
 
         {/* FORM */}
-        <div id="contacts" className="bg-gradient-to-br from-brand-dark to-brand-navy rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
-          <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-orange/30 blur-3xl rounded-full" />
+        <div id="contacts" className="bg-brand-dark rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand/20 blur-3xl rounded-full" />
           <h2 className="font-display font-extrabold text-3xl relative">Есть проект? Давайте обсудим</h2>
           <p className="text-white/60 mt-3 relative">Заполните форму, и мы свяжемся с вами в ближайшее время.</p>
           {sent ? (
             <div className="mt-8 flex flex-col items-center justify-center text-center py-10 animate-scale-in relative">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-orange to-brand flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand to-brand flex items-center justify-center mb-4">
                 <Icon name="Check" size={32} className="text-brand-dark" />
               </div>
               <p className="font-display font-bold text-xl">Заявка отправлена!</p>
@@ -342,26 +342,26 @@ const Index = () => {
               </div>
               <Textarea value={form.task} onChange={(e) => setForm({ ...form, task: e.target.value })} placeholder="Опишите задачу" rows={4} className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl" />
               {error && <p className="text-red-400 text-sm">{error}</p>}
-              <Button type="submit" disabled={loading} size="lg" className="w-full rounded-xl bg-gradient-to-r from-brand-orange to-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
+              <Button type="submit" disabled={loading} size="lg" className="w-full rounded-xl bg-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
                 {loading ? 'Отправляем...' : <><span>Отправить заявку</span><Icon name="Send" size={18} className="ml-1" /></>}
               </Button>
             </form>
           )}
           <div className="mt-8 grid sm:grid-cols-2 gap-4 text-sm relative">
-            <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand-orange" /> +7 (999) 123-45-67</div>
-            <div className="flex items-center gap-2"><Icon name="Mail" size={16} className="text-brand-orange" /> info@proximum.ru</div>
-            <div className="flex items-center gap-2"><Icon name="Send" size={16} className="text-brand-orange" /> @proximum</div>
-            <div className="flex items-center gap-2"><Icon name="MapPin" size={16} className="text-brand-orange" /> г. Москва</div>
+            <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand" /> +7 (999) 123-45-67</div>
+            <div className="flex items-center gap-2"><Icon name="Mail" size={16} className="text-brand" /> info@proximum.ru</div>
+            <div className="flex items-center gap-2"><Icon name="Send" size={16} className="text-brand" /> @proximum</div>
+            <div className="flex items-center gap-2"><Icon name="MapPin" size={16} className="text-brand" /> г. Москва</div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-brand-dark text-white/70">
+      <footer className="bg-brand-graphite text-white/70">
         <div className="container mx-auto py-12 grid md:grid-cols-3 gap-8">
           <div>
             <span className="font-display font-extrabold text-xl text-white">
-              PRO<span className="text-brand-orange">ximum</span>
+              PRO<span className="text-brand">ximum</span>
             </span>
             <p className="text-sm mt-3 max-w-xs">Разработка, доработка и сопровождение решений на платформе 1С:Предприятие. Решаем задачи любой сложности.</p>
             <div className="flex gap-3 mt-5">
@@ -376,7 +376,7 @@ const Index = () => {
             <h4 className="font-display font-bold text-white mb-4">Навигация</h4>
             <ul className="space-y-2 text-sm">
               {nav.map((n) => (
-                <li key={n.label}><a href={n.href} className="hover:text-brand-orange transition-colors">{n.label}</a></li>
+                <li key={n.label}><a href={n.href} className="hover:text-brand transition-colors">{n.label}</a></li>
               ))}
             </ul>
           </div>
@@ -394,8 +394,8 @@ const Index = () => {
           <div className="container mx-auto py-5 flex flex-col sm:flex-row justify-between gap-2 text-xs">
             <span>© 2026 PROximum. Все права защищены.</span>
             <div className="flex gap-5">
-              <a href="#" className="hover:text-brand-orange">Политика конфиденциальности</a>
-              <a href="#" className="hover:text-brand-orange">Публичная оферта</a>
+              <a href="#" className="hover:text-brand">Политика конфиденциальности</a>
+              <a href="#" className="hover:text-brand">Публичная оферта</a>
             </div>
           </div>
         </div>

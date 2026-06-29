@@ -96,6 +96,35 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-orange via-brand to-brand-orange bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+  }
+  .grid-pattern {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 184, 0, 0.18) 1px,
+      transparent 0
+    );
+    background-size: 28px 28px;
+  }
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    @apply -translate-y-2 shadow-2xl;
   }
 }

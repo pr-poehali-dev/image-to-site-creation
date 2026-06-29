@@ -72,15 +72,33 @@ const blog = [
   { title: 'Когда пора переходить на 1С:ERP?', tag: 'ERP' },
 ];
 
+const SEND_LEAD_URL = 'https://functions.poehali.dev/c535fbbd-9be9-46d7-9689-055762068c77';
+
 const Index = () => {
   const [form, setForm] = useState({ name: '', contact: '', task: '' });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: '', contact: '', task: '' });
-    setTimeout(() => setSent(false), 4000);
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch(SEND_LEAD_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('Ошибка отправки');
+      setSent(true);
+      setForm({ name: '', contact: '', task: '' });
+      setTimeout(() => setSent(false), 5000);
+    } catch {
+      setError('Не удалось отправить заявку. Попробуйте ещё раз.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -323,8 +341,9 @@ const Index = () => {
                 <Input required value={form.contact} onChange={(e) => setForm({ ...form, contact: e.target.value })} placeholder="Телефон или Telegram" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl h-12" />
               </div>
               <Textarea value={form.task} onChange={(e) => setForm({ ...form, task: e.target.value })} placeholder="Опишите задачу" rows={4} className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl" />
-              <Button type="submit" size="lg" className="w-full rounded-xl bg-gradient-to-r from-brand-orange to-brand text-brand-dark font-bold text-base hover:opacity-90">
-                Отправить заявку <Icon name="Send" size={18} className="ml-1" />
+              {error && <p className="text-red-400 text-sm">{error}</p>}
+              <Button type="submit" disabled={loading} size="lg" className="w-full rounded-xl bg-gradient-to-r from-brand-orange to-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
+                {loading ? 'Отправляем...' : <><span>Отправить заявку</span><Icon name="Send" size={18} className="ml-1" /></>}
               </Button>
             </form>
           )}

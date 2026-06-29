@@ -1,0 +1,21 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Отправка заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тест Тестов",
+        "contact": "@test",
+        "task": "Тестовая заявка"
+      },
+      "expectedStatus": 200
+    }
+  ]
+}

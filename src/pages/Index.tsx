@@ -74,6 +74,10 @@ const blog = [
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/c535fbbd-9be9-46d7-9689-055762068c77';
 
+const scrollToForm = () => {
+  document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
+};
+
 const Index = () => {
   const [form, setForm] = useState({ name: '', contact: '', task: '' });
   const [sent, setSent] = useState(false);
@@ -122,9 +126,9 @@ const Index = () => {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
               <Icon name="Phone" size={16} className="text-brand" />
-              <span className="font-display font-bold text-sm">+7 (999) 123-45-67</span>
+              <span className="font-display font-bold text-sm">+7 (926) 895-96-06</span>
             </div>
-            <Button className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
+            <Button onClick={scrollToForm} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
               Обсудить проект
             </Button>
           </div>
@@ -144,7 +148,7 @@ const Index = () => {
               Автоматизируем бизнес-процессы, создаём новые возможности и дорабатываем любые конфигурации 1С.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90 hover-lift">
+              <Button size="lg" onClick={scrollToForm} className="rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90 hover-lift">
                 Обсудить проект <Icon name="ArrowRight" size={18} className="ml-1" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full border-2 font-semibold text-base px-8" asChild>
@@ -348,7 +352,7 @@ const Index = () => {
             </form>
           )}
           <div className="mt-8 grid sm:grid-cols-2 gap-4 text-sm relative">
-            <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand" /> +7 (999) 123-45-67</div>
+            <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand" /> +7 (926) 895-96-06</div>
             <div className="flex items-center gap-2"><Icon name="Mail" size={16} className="text-brand" /> info@proximum.ru</div>
             <div className="flex items-center gap-2"><Icon name="Send" size={16} className="text-brand" /> @proximum</div>
             <div className="flex items-center gap-2"><Icon name="MapPin" size={16} className="text-brand" /> г. Москва</div>
@@ -383,7 +387,7 @@ const Index = () => {
           <div>
             <h4 className="font-display font-bold text-white mb-4">Контакты</h4>
             <ul className="space-y-2 text-sm">
-              <li>+7 (999) 123-45-67</li>
+              <li>+7 (926) 895-96-06</li>
               <li>info@proximum.ru</li>
               <li>@proximum</li>
               <li>г. Москва</li>

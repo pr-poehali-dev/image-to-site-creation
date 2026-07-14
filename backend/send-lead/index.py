@@ -36,7 +36,7 @@ def handler(event: dict, context) -> dict:
 
     smtp_user = os.environ['SMTP_USER']
     smtp_password = os.environ['SMTP_PASSWORD']
-    to_email = 'help@itproximum.ru'
+    to_email = '1cpro@internet.ru'
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = Header(f'Новая заявка с сайта — {name}', 'utf-8')

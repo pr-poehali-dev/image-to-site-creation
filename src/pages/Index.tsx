@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { portfolio } from '@/data/portfolio';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/e903fde7-5d4e-425c-b4ed-1bc1f1a863e7.PNG';
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
@@ -15,6 +17,8 @@ const nav = [
   { label: 'О компании', href: '#about' },
   { label: 'Контакты', href: '#contacts' },
 ];
+
+const heroPortfolio = portfolio.slice(0, 3);
 
 const tags = ['ERP', 'УТ', 'БП', 'ЗУП', 'УНФ', 'КА'];
 
@@ -40,12 +44,6 @@ const solutions = [
   { icon: 'Printer', title: 'Массовая печать документов', text: 'Печать любых документов из 1С в один клик' },
   { icon: 'Send', title: 'Интеграция с Telegram', text: 'Уведомления, боты, отправка документов и данных' },
   { icon: 'ShoppingCart', title: 'Автоматическое создание заказов', text: 'Создание заказов поставщикам на основании данных продаж' },
-];
-
-const portfolio = [
-  { tag: 'ERP', title: 'Внедрение 1С:ERP для производства', text: 'Полный цикл автоматизации завода: от закупок до отгрузки' },
-  { tag: 'Розница', title: 'Сеть из 40 магазинов на УНФ', text: 'Единая база, обмен с кассами и онлайн-аналитика продаж' },
-  { tag: 'Интеграция', title: 'Маркетплейсы + 1С', text: 'Автоматическая выгрузка остатков и заказов на Wildberries и Ozon' },
 ];
 
 const why = [
@@ -253,12 +251,21 @@ const Index = () => {
       {/* PORTFOLIO */}
       <section id="portfolio" className="bg-brand-dark text-white">
         <div className="container mx-auto py-20">
-          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Портфолио</span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3 mb-12">Реализованные проекты</h2>
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+              <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Портфолио</span>
+              <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Реализованные проекты</h2>
+            </div>
+            <Button asChild variant="outline" className="rounded-full border-2 border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white font-semibold">
+              <Link to="/portfolio">
+                Все проекты <Icon name="ArrowRight" size={16} className="ml-1" />
+              </Link>
+            </Button>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {portfolio.map((p) => (
+            {heroPortfolio.map((p) => (
               <div key={p.title} className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-colors backdrop-blur-sm">
-                <span className="inline-block bg-gradient-to-r from-brand to-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full">
+                <span className="inline-block bg-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full">
                   {p.tag}
                 </span>
                 <h3 className="font-display font-bold text-xl mt-5">{p.title}</h3>

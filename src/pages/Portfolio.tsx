@@ -1,13 +1,13 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { portfolio } from '@/data/portfolio';
-
-const scrollToForm = () => {
-  window.location.href = '/#contacts';
-};
+import LeadFormModal from '@/components/LeadFormModal';
 
 const Portfolio = () => {
+  const [formOpen, setFormOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-brand-dark font-sans overflow-x-hidden">
       {/* HEADER */}
@@ -29,7 +29,7 @@ const Portfolio = () => {
               <Icon name="Phone" size={16} className="text-brand" />
               <span className="font-display font-bold text-sm">+7 (926) 895-96-06</span>
             </div>
-            <Button onClick={scrollToForm} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
+            <Button onClick={() => setFormOpen(true)} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
               Обсудить проект
             </Button>
           </div>
@@ -86,7 +86,7 @@ const Portfolio = () => {
         <div className="container mx-auto py-16 text-center">
           <h2 className="font-display font-extrabold text-3xl md:text-4xl">Хотите похожий результат?</h2>
           <p className="text-white/60 mt-3 max-w-lg mx-auto">Расскажите о своей задаче — предложим оптимальное решение на платформе 1С.</p>
-          <Button size="lg" onClick={scrollToForm} className="mt-8 rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90">
+          <Button size="lg" onClick={() => setFormOpen(true)} className="mt-8 rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90">
             Обсудить проект <Icon name="ArrowRight" size={18} className="ml-1" />
           </Button>
         </div>
@@ -99,6 +99,8 @@ const Portfolio = () => {
           <Link to="/" className="hover:text-brand">На главную</Link>
         </div>
       </footer>
+
+      <LeadFormModal open={formOpen} onOpenChange={setFormOpen} />
     </div>
   );
 };

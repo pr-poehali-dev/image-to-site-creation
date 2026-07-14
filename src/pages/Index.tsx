@@ -226,14 +226,9 @@ const Index = () => {
 
       {/* SOLUTIONS */}
       <section id="solutions" className="container mx-auto py-20">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши решения</span>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Готовые продукты</h2>
-          </div>
-          <a href="#" className="hidden sm:inline-flex items-center gap-1 text-brand font-semibold">
-            Все решения <Icon name="ArrowRight" size={16} />
-          </a>
+        <div className="mb-12">
+          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши решения</span>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Готовые продукты</h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {solutions.map((s) => (

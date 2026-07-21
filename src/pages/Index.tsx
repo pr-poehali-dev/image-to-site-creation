@@ -297,14 +297,40 @@ const Index = () => {
         <div className="container mx-auto py-20">
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Как мы работаем</span>
           <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 gap-x-8 mt-10">
-            <div className="hidden lg:block absolute top-6 left-[8.33%] right-[8.33%] border-t-2 border-dashed border-brand/40" />
-            {steps.map((s, i) => (
+            <svg
+              className="hidden lg:block absolute left-0 right-0 top-6 -translate-y-1/2 w-full h-14 pointer-events-none"
+              viewBox="0 0 1200 56"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M30,30 Q120,8 210,26 T390,20 T570,38 T750,14 T930,32 T1170,22"
+                stroke="#3A3A3A"
+                strokeOpacity="0.5"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeDasharray="2 11 7 9 3 8 5 10"
+              />
+              {[
+                { x: 205, y: 24, r: -18 },
+                { x: 385, y: 21, r: 14 },
+                { x: 565, y: 36, r: -22 },
+                { x: 745, y: 15, r: 20 },
+                { x: 925, y: 30, r: -16 },
+              ].map((a, idx) => (
+                <polygon
+                  key={idx}
+                  points="0,-5 9,0 0,5"
+                  fill="#3A3A3A"
+                  fillOpacity="0.65"
+                  transform={`translate(${a.x} ${a.y}) rotate(${a.r})`}
+                />
+              ))}
+            </svg>
+            {steps.map((s) => (
               <div key={s.n} className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
-                <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand font-display font-extrabold text-brand-dark text-lg mb-4 shadow-md shadow-brand/20">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand font-display font-extrabold text-brand-dark text-lg mb-4 shadow-md shadow-brand/20">
                   {s.n}
-                  {i < steps.length - 1 && (
-                    <Icon name="ChevronRight" size={14} className="hidden lg:block absolute -right-6 text-brand/50" />
-                  )}
                 </div>
                 <h3 className="font-display font-bold">{s.title}</h3>
                 <p className="text-muted-foreground text-sm mt-1">{s.text}</p>

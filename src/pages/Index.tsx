@@ -199,6 +199,9 @@ const Index = () => {
           <p className="mt-4 text-muted-foreground text-lg">
             PROximum — это команда разработчиков, которая глубоко погружается в задачи клиента и предлагает оптимальные технические решения.
           </p>
+          <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold mt-6 hover:gap-2 transition-all">
+            Нам доверяют следующие компании <Icon name="ArrowRight" size={16} />
+          </Link>
         </div>
       </section>
 

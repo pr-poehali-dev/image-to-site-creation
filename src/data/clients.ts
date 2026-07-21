@@ -20,6 +20,7 @@ export const clients: ClientItem[] = [
   },
   {
     name: 'ООО «Полимер-коммерц»',
+    logo: '/logos/polymer-commerce.png',
     website: 'http://polymercommerce.ru/',
     industry: 'Оптовая торговля',
     description: 'Оптовая торговля потребительскими товарами.',

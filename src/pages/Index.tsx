@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { portfolio } from '@/data/portfolio';
+import { blogPosts } from '@/data/blog';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/e903fde7-5d4e-425c-b4ed-1bc1f1a863e7.PNG';
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
@@ -62,12 +63,6 @@ const steps = [
   { n: '4', title: 'Тестирование', text: 'Проверяем и устраняем ошибки' },
   { n: '5', title: 'Внедрение', text: 'Запускаем решение в рабочую среду' },
   { n: '6', title: 'Поддержка', text: 'Сопровождаем и развиваем систему' },
-];
-
-const blog = [
-  { title: 'Как ускорить работу 1С: 10 практических советов', tag: 'Оптимизация' },
-  { title: '5 способов автоматизации складского учёта', tag: 'Склад' },
-  { title: 'Когда пора переходить на 1С:ERP?', tag: 'ERP' },
 ];
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/c535fbbd-9be9-46d7-9689-055762068c77';
@@ -316,16 +311,16 @@ const Index = () => {
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Блог</span>
           <h2 className="font-display font-extrabold text-3xl mt-3 mb-8">Полезные статьи</h2>
           <div className="space-y-4">
-            {blog.map((b) => (
-              <a key={b.title} href="#" className="flex items-center gap-5 bg-white border border-black/5 rounded-2xl p-5 hover-lift">
+            {blogPosts.map((b) => (
+              <Link key={b.slug} to={`/blog/${b.slug}`} className="flex items-center gap-5 bg-white border border-black/5 rounded-2xl p-5 hover-lift">
                 <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center shrink-0">
-                  <Icon name="FileText" size={26} className="text-brand-dark" />
+                  <Icon name={b.icon} size={26} className="text-brand-dark" />
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-brand">{b.tag}</span>
                   <h3 className="font-display font-bold leading-tight">{b.title}</h3>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

@@ -12,6 +12,7 @@ export interface ClientItem {
 export const clients: ClientItem[] = [
   {
     name: 'VinylRussia',
+    logo: 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/cc7c5472-87e6-42d1-bbac-9d52dc68236a.png',
     website: 'https://vinylrussia.ru/',
     industry: 'Автомобильные плёнки',
     description: 'Крупнейший в России поставщик автомобильных виниловых и защитных плёнок.',

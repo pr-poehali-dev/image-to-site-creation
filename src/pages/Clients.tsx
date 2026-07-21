@@ -40,7 +40,6 @@ const Clients = () => {
           <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-brand transition-colors mb-6">
             <Icon name="ArrowLeft" size={16} /> На главную
           </Link>
-          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши клиенты</span>
           <h1 className="font-display font-extrabold text-4xl md:text-5xl mt-3 max-w-2xl">
             Нам доверяют следующие компании
           </h1>

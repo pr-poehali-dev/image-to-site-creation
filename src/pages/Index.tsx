@@ -313,8 +313,8 @@ const Index = () => {
           <div className="space-y-4">
             {blogPosts.map((b) => (
               <Link key={b.slug} to={`/blog/${b.slug}`} className="flex items-center gap-5 bg-white border border-black/5 rounded-2xl p-5 hover-lift">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center shrink-0">
-                  <Icon name={b.icon} size={26} className="text-brand-dark" />
+                <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                  <img src={b.image} alt={b.title} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-brand">{b.tag}</span>

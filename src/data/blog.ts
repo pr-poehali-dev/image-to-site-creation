@@ -9,6 +9,7 @@ export interface BlogPostItem {
   title: string;
   tag: string;
   icon: string;
+  image: string;
   date: string;
   readTime: string;
   excerpt: string;
@@ -21,6 +22,7 @@ export const blogPosts: BlogPostItem[] = [
     title: 'Как ускорить работу 1С: 10 практических советов',
     tag: 'Оптимизация',
     icon: 'Zap',
+    image: 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/f6cafc74-c920-420a-85c2-e5f68389fab7.jpg',
     date: '15 июля 2026',
     readTime: '7 мин',
     excerpt: 'Разбираем частые причины медленной работы 1С и даём конкретные шаги, которые можно применить уже сегодня.',
@@ -54,6 +56,7 @@ export const blogPosts: BlogPostItem[] = [
     title: '5 способов автоматизации складского учёта',
     tag: 'Склад',
     icon: 'PackageSearch',
+    image: 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/1c15ca9b-3d06-4671-9595-51335f814c6a.jpg',
     date: '2 июля 2026',
     readTime: '6 мин',
     excerpt: 'Как убрать ручной труд и ошибки на складе с помощью инструментов, которые уже есть в экосистеме 1С.',
@@ -77,6 +80,7 @@ export const blogPosts: BlogPostItem[] = [
     title: 'Когда пора переходить на 1С:ERP?',
     tag: 'ERP',
     icon: 'Factory',
+    image: 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/aa460d11-4347-4fb4-a8d0-3fed40c41837.jpg',
     date: '20 июня 2026',
     readTime: '8 мин',
     excerpt: 'Признаки того, что компании стало тесно в текущей учётной системе, и как проходит переход на 1С:ERP без остановки бизнеса.',

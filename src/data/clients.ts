@@ -33,6 +33,7 @@ export const clients: ClientItem[] = [
   },
   {
     name: 'ООО «ДОБРОВЕТ»',
+    logo: 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/b8d1b980-c0a7-4657-aca3-9a3220fb80dc.png',
     website: 'https://dobrovet.ru/',
     industry: 'Ветеринария и фармацевтика',
     description: 'Ветеринарная сеть и торговля оптовая фармацевтической продукцией.',

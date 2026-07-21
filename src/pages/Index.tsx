@@ -296,11 +296,15 @@ const Index = () => {
       <section className="bg-muted/40">
         <div className="container mx-auto py-20">
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Как мы работаем</span>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-10">
-            {steps.map((s) => (
-              <div key={s.n} className="relative">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand flex items-center justify-center font-display font-extrabold text-brand-dark text-lg mb-4">
+          <div className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 gap-x-8 mt-10">
+            <div className="hidden lg:block absolute top-6 left-[8.33%] right-[8.33%] border-t-2 border-dashed border-brand/40" />
+            {steps.map((s, i) => (
+              <div key={s.n} className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
+                <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand font-display font-extrabold text-brand-dark text-lg mb-4 shadow-md shadow-brand/20">
                   {s.n}
+                  {i < steps.length - 1 && (
+                    <Icon name="ChevronRight" size={14} className="hidden lg:block absolute -right-6 text-brand/50" />
+                  )}
                 </div>
                 <h3 className="font-display font-bold">{s.title}</h3>
                 <p className="text-muted-foreground text-sm mt-1">{s.text}</p>

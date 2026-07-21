@@ -66,11 +66,25 @@ const Clients = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {clients.map((c) => (
               <div key={c.name} className="group bg-white border border-black/5 rounded-2xl p-7 hover-lift">
-                <img src={c.logo} alt={c.name} className="h-10 object-contain" />
+                {c.logo ? (
+                  <img src={c.logo} alt={c.name} className="h-10 object-contain" />
+                ) : (
+                  <div className="h-10 w-28 rounded-lg bg-muted/60 border border-dashed border-black/10 flex items-center justify-center">
+                    <span className="text-[10px] text-muted-foreground font-medium">Нет логотипа</span>
+                  </div>
+                )}
                 <span className="inline-block bg-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full mt-4">
                   {c.industry}
                 </span>
-                <h3 className="font-display font-bold text-xl mt-4">{c.name}</h3>
+                <h3 className="font-display font-bold text-xl mt-4">
+                  {c.website ? (
+                    <a href={c.website} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors inline-flex items-center gap-1.5">
+                      {c.name} <Icon name="ExternalLink" size={14} className="text-muted-foreground" />
+                    </a>
+                  ) : (
+                    c.name
+                  )}
+                </h3>
                 <p className="text-muted-foreground mt-2 text-sm">{c.description}</p>
                 <ul className="mt-5 space-y-2">
                   {c.solutions.map((s) => (

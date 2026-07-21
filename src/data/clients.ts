@@ -42,6 +42,7 @@ export const clients: ClientItem[] = [
   },
   {
     name: 'ООО «Стерильный»',
+    logo: 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/6ed0e096-ee0d-4a3a-ba24-758acf2ce7a1.png',
     website: 'https://sterilniy.ru/',
     industry: 'Медицинское оборудование',
     description: 'Торговля оптовая техникой, оборудованием и инструментами, применяемыми в медицинских целях.',

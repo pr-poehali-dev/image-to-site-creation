@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { portfolio } from '@/data/portfolio';
 import { blogPosts } from '@/data/blog';
+import LeadFormModal from '@/components/LeadFormModal';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/e903fde7-5d4e-425c-b4ed-1bc1f1a863e7.PNG';
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
@@ -76,6 +77,7 @@ const Index = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [formOpen, setFormOpen] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -207,7 +209,7 @@ const Index = () => {
           <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3 mb-12">Что мы умеем</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
-              <div key={s.title} className="group bg-white rounded-2xl p-7 border border-black/5 hover-lift cursor-pointer">
+              <div key={s.title} onClick={() => setFormOpen(true)} className="group bg-white rounded-2xl p-7 border border-black/5 hover-lift cursor-pointer">
                 <div className="w-13 h-13 w-14 h-14 rounded-2xl bg-gradient-to-br from-brand/20 to-brand-graphite/20 flex items-center justify-center group-hover:from-brand group-hover:to-brand transition-all">
                   <Icon name={s.icon} size={26} className="text-brand group-hover:text-brand-dark transition-colors" />
                 </div>
@@ -404,6 +406,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <LeadFormModal open={formOpen} onOpenChange={setFormOpen} />
     </div>
   );
 };

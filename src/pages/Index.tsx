@@ -235,10 +235,6 @@ const Index = () => {
               </div>
             </div>
           </div>
-
-          <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold mt-6 hover:gap-2 transition-all">
-            Нам доверяют следующие компании <Icon name="ArrowRight" size={16} />
-          </Link>
         </div>
       </section>
 

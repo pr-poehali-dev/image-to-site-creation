@@ -61,10 +61,6 @@ const steps = [
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/c535fbbd-9be9-46d7-9689-055762068c77';
 
-const scrollToForm = () => {
-  document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
-};
-
 const Index = () => {
   const [form, setForm] = useState({ name: '', contact: '', task: '' });
   const [sent, setSent] = useState(false);
@@ -116,7 +112,7 @@ const Index = () => {
               <Icon name="Phone" size={16} className="text-brand" />
               <span className="font-display font-bold text-sm">+7 (926) 895-96-06</span>
             </div>
-            <Button onClick={scrollToForm} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
+            <Button onClick={() => setFormOpen(true)} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
               Обсудить проект
             </Button>
           </div>
@@ -136,7 +132,7 @@ const Index = () => {
               Автоматизируем бизнес-процессы, создаём новые возможности и дорабатываем любые конфигурации 1С.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" onClick={scrollToForm} className="rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90 hover-lift">
+              <Button size="lg" onClick={() => setFormOpen(true)} className="rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90 hover-lift">
                 Обсудить проект <Icon name="ArrowRight" size={18} className="ml-1" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full border-2 font-semibold text-base px-8" asChild>

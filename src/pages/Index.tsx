@@ -255,13 +255,13 @@ const Index = () => {
               <Link
                 key={c.name}
                 to="/clients"
-                className="group bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center justify-center h-24 hover-lift"
+                className="group bg-white border border-white/10 rounded-2xl p-5 flex items-center justify-center h-24 hover-lift"
                 title={c.name}
               >
                 {c.logo ? (
-                  <img src={c.logo} alt={c.name} className="max-h-10 max-w-full object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-all" />
+                  <img src={c.logo} alt={c.name} className="max-h-14 max-w-full object-contain opacity-90 group-hover:opacity-100 transition-all" />
                 ) : (
-                  <span className="text-sm font-display font-bold text-center text-white/60 group-hover:text-white transition-colors">
+                  <span className="text-sm font-display font-bold text-center text-brand-dark/70 group-hover:text-brand-dark transition-colors">
                     {c.name}
                   </span>
                 )}

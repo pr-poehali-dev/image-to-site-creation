@@ -239,12 +239,12 @@ const Index = () => {
       </section>
 
       {/* TRUSTED BY */}
-      <section className="bg-muted/40 border-y border-black/5">
+      <section className="bg-brand-dark text-white">
         <div className="container mx-auto py-14">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
               <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Нам доверяют</span>
-              <h2 className="font-display font-extrabold text-2xl md:text-3xl mt-2">Компании, которые уже растут вместе с нами</h2>
+              <h2 className="font-display font-extrabold text-2xl md:text-3xl mt-2 text-white">Компании, которые уже растут вместе с нами</h2>
             </div>
             <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold hover:gap-2 transition-all shrink-0">
               Смотреть все проекты <Icon name="ArrowRight" size={16} />
@@ -255,13 +255,13 @@ const Index = () => {
               <Link
                 key={c.name}
                 to="/clients"
-                className="group bg-white border border-black/5 rounded-2xl p-5 flex items-center justify-center h-24 hover-lift"
+                className="group bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center justify-center h-24 hover-lift"
                 title={c.name}
               >
                 {c.logo ? (
-                  <img src={c.logo} alt={c.name} className="max-h-10 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all" />
+                  <img src={c.logo} alt={c.name} className="max-h-10 max-w-full object-contain brightness-0 invert opacity-70 group-hover:opacity-100 transition-all" />
                 ) : (
-                  <span className="text-sm font-display font-bold text-center text-muted-foreground group-hover:text-brand-dark transition-colors">
+                  <span className="text-sm font-display font-bold text-center text-white/60 group-hover:text-white transition-colors">
                     {c.name}
                   </span>
                 )}

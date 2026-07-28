@@ -196,6 +196,19 @@ const Index = () => {
           <p className="mt-4 text-muted-foreground text-lg">
             PROximum — это команда разработчиков, которая глубоко погружается в задачи клиента и предлагает оптимальные технические решения.
           </p>
+
+          <div className="mt-6 bg-white border border-black/5 rounded-2xl p-6 flex gap-4 items-start hover-lift">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center shrink-0">
+              <Icon name="Users" size={22} className="text-brand-dark" />
+            </div>
+            <div>
+              <h3 className="font-display font-bold text-lg">Ваш отдел разработки 1С — без найма в штат</h3>
+              <p className="text-muted-foreground mt-1.5">
+                Мы работаем как выделенная команда на аутсорсе: вы получаете разработчиков 1С по цене подписки, без затрат на офис, отпуска, больничные и подбор персонала — а масштабировать команду под задачи можно в любой момент.
+              </p>
+            </div>
+          </div>
+
           <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold mt-6 hover:gap-2 transition-all">
             Нам доверяют следующие компании <Icon name="ArrowRight" size={16} />
           </Link>

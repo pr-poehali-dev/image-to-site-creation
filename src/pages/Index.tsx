@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { portfolio } from '@/data/portfolio';
 import { blogPosts } from '@/data/blog';
+import { clients } from '@/data/clients';
 import LeadFormModal from '@/components/LeadFormModal';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/e903fde7-5d4e-425c-b4ed-1bc1f1a863e7.PNG';
@@ -238,6 +239,39 @@ const Index = () => {
           <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold mt-6 hover:gap-2 transition-all">
             Нам доверяют следующие компании <Icon name="ArrowRight" size={16} />
           </Link>
+        </div>
+      </section>
+
+      {/* TRUSTED BY */}
+      <section className="bg-muted/40 border-y border-black/5">
+        <div className="container mx-auto py-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Нам доверяют</span>
+              <h2 className="font-display font-extrabold text-2xl md:text-3xl mt-2">Компании, которые уже растут вместе с нами</h2>
+            </div>
+            <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold hover:gap-2 transition-all shrink-0">
+              Смотреть все проекты <Icon name="ArrowRight" size={16} />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {clients.map((c) => (
+              <Link
+                key={c.name}
+                to="/clients"
+                className="group bg-white border border-black/5 rounded-2xl p-5 flex items-center justify-center h-24 hover-lift"
+                title={c.name}
+              >
+                {c.logo ? (
+                  <img src={c.logo} alt={c.name} className="max-h-10 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all" />
+                ) : (
+                  <span className="text-sm font-display font-bold text-center text-muted-foreground group-hover:text-brand-dark transition-colors">
+                    {c.name}
+                  </span>
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

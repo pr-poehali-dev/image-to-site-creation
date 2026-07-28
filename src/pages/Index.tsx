@@ -209,6 +209,32 @@ const Index = () => {
             </div>
           </div>
 
+          <div className="mt-4 bg-brand-dark rounded-2xl p-6 text-white">
+            <h4 className="font-display font-bold text-base mb-4">Штатный разработчик vs аутсорс-команда</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <span className="text-xs text-white/50 uppercase tracking-wide">В штате</span>
+                <ul className="mt-3 space-y-2.5 text-sm text-white/70">
+                  <li className="flex gap-2"><Icon name="X" size={16} className="text-white/40 shrink-0 mt-0.5" /> Оклад + налоги + отпускные</li>
+                  <li className="flex gap-2"><Icon name="X" size={16} className="text-white/40 shrink-0 mt-0.5" /> Рабочее место и техника</li>
+                  <li className="flex gap-2"><Icon name="X" size={16} className="text-white/40 shrink-0 mt-0.5" /> Простой между задачами</li>
+                  <li className="flex gap-2"><Icon name="X" size={16} className="text-white/40 shrink-0 mt-0.5" /> Один специалист — одна экспертиза</li>
+                  <li className="flex gap-2"><Icon name="X" size={16} className="text-white/40 shrink-0 mt-0.5" /> Риск простоя на больничном/отпуске</li>
+                </ul>
+              </div>
+              <div>
+                <span className="text-xs text-brand uppercase tracking-wide font-semibold">На аутсорсе с нами</span>
+                <ul className="mt-3 space-y-2.5 text-sm text-white/90">
+                  <li className="flex gap-2"><Icon name="Check" size={16} className="text-brand shrink-0 mt-0.5" /> Платите только за факт работы</li>
+                  <li className="flex gap-2"><Icon name="Check" size={16} className="text-brand shrink-0 mt-0.5" /> Без затрат на офис и оборудование</li>
+                  <li className="flex gap-2"><Icon name="Check" size={16} className="text-brand shrink-0 mt-0.5" /> Загрузка под реальные задачи</li>
+                  <li className="flex gap-2"><Icon name="Check" size={16} className="text-brand shrink-0 mt-0.5" /> Вся команда экспертов сразу</li>
+                  <li className="flex gap-2"><Icon name="Check" size={16} className="text-brand shrink-0 mt-0.5" /> Всегда есть кем подменить</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <Link to="/clients" className="inline-flex items-center gap-1 text-brand font-semibold mt-6 hover:gap-2 transition-all">
             Нам доверяют следующие компании <Icon name="ArrowRight" size={16} />
           </Link>

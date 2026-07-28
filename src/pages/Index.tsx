@@ -13,11 +13,10 @@ const HERO_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
 
 const nav = [
+  { label: 'О компании', href: '#about' },
   { label: 'Услуги', href: '#services' },
-  { label: 'Решения', href: '#solutions' },
   { label: 'Портфолио', href: '#portfolio' },
   { label: 'Блог', href: '#blog' },
-  { label: 'О компании', href: '#about' },
   { label: 'Контакты', href: '#contacts' },
 ];
 
@@ -40,13 +39,6 @@ const services = [
   { icon: 'TrendingUp', title: 'Автоматизация процессов', text: 'Устраняем рутину и повышаем эффективность' },
   { icon: 'Cloud', title: 'Облачные решения', text: 'Переход в облако и настройка инфраструктуры' },
   { icon: 'RefreshCw', title: 'Обмены между базами', text: 'Настраиваем обмены данными между системами 1С' },
-];
-
-const solutions = [
-  { icon: 'Wallet', title: 'Начисление зарплаты в банк', text: 'Автоматическое создание начислений на основании платёжных ведомостей' },
-  { icon: 'Printer', title: 'Массовая печать документов', text: 'Печать любых документов из 1С в один клик' },
-  { icon: 'Send', title: 'Интеграция с Telegram', text: 'Уведомления, боты, отправка документов и данных' },
-  { icon: 'ShoppingCart', title: 'Автоматическое создание заказов', text: 'Создание заказов поставщикам на основании данных продаж' },
 ];
 
 const why = [
@@ -148,7 +140,7 @@ const Index = () => {
                 Обсудить проект <Icon name="ArrowRight" size={18} className="ml-1" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-full border-2 font-semibold text-base px-8" asChild>
-                <a href="#solutions">Наши решения</a>
+                <a href="#about">О компании</a>
               </Button>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -290,25 +282,6 @@ const Index = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* SOLUTIONS */}
-      <section id="solutions" className="container mx-auto py-20">
-        <div className="mb-12">
-          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши решения</span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Готовые продукты</h2>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {solutions.map((s) => (
-            <div key={s.title} className="bg-white rounded-2xl p-6 border border-black/5 hover-lift">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center mb-5">
-                <Icon name={s.icon} size={22} className="text-brand-dark" />
-              </div>
-              <h3 className="font-display font-bold text-lg leading-tight">{s.title}</h3>
-              <p className="text-muted-foreground text-sm mt-3">{s.text}</p>
-            </div>
-          ))}
         </div>
       </section>
 

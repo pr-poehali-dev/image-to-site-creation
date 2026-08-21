@@ -9,7 +9,7 @@ import { blogPosts } from '@/data/blog';
 import { clients } from '@/data/clients';
 import LeadFormModal from '@/components/LeadFormModal';
 
-const HERO_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/e903fde7-5d4e-425c-b4ed-1bc1f1a863e7.PNG';
+const HERO_IMG = '/hero-integrations.webp';
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
 
 const nav = [

@@ -21,6 +21,7 @@ const Portfolio = () => {
           </Link>
           <nav className="hidden lg:flex items-center gap-7">
             <Link to="/" className="text-sm font-medium hover:text-brand transition-colors">Главная</Link>
+            <Link to="/etrn" className="text-sm font-medium hover:text-brand transition-colors">ЭТрН</Link>
             <Link to="/portfolio" className="text-sm font-medium text-brand transition-colors">Проекты</Link>
             <a href="/#contacts" className="text-sm font-medium hover:text-brand transition-colors">Контакты</a>
           </nav>

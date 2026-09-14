@@ -8,12 +8,14 @@ import { portfolio } from '@/data/portfolio';
 import { blogPosts } from '@/data/blog';
 import { clients } from '@/data/clients';
 import LeadFormModal from '@/components/LeadFormModal';
+import NewsScroller from '@/components/NewsScroller';
 
 const HERO_IMG = '/hero-integrations.webp';
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
 
 const nav = [
   { label: 'О компании', href: '#about' },
+  { label: 'ЭТрН', href: '/etrn' },
   { label: 'Услуги', href: '#services' },
   { label: 'Портфолио', href: '#portfolio' },
   { label: 'Блог', href: '#blog' },
@@ -33,6 +35,7 @@ const advantages = [
 ];
 
 const services = [
+  { icon: 'Truck', title: 'Внедрение ЭТрН', text: 'Электронные транспортные накладные: подключение к ГИС ЭПД и поддержка' },
   { icon: 'Code2', title: 'Разработка на 1С', text: 'Создаём новый функционал любой сложности' },
   { icon: 'Puzzle', title: 'Доработка типовых решений', text: 'ERP, УТ, БП, ЗУП, КА, УНФ и любые отраслевые решения' },
   { icon: 'Link', title: 'Интеграции', text: 'Сайты, CRM, Telegram, банки, API, маркетплейсы' },
@@ -101,11 +104,17 @@ const Index = () => {
             <span className="text-[10px] text-muted-foreground tracking-wide">Цифровизация вашего бизнеса</span>
           </a>
           <nav className="hidden lg:flex items-center gap-7">
-            {nav.map((n) => (
-              <a key={n.label} href={n.href} className="text-sm font-medium hover:text-brand transition-colors">
-                {n.label}
-              </a>
-            ))}
+            {nav.map((n) =>
+              n.href.startsWith('/') ? (
+                <Link key={n.label} to={n.href} className="text-sm font-medium hover:text-brand transition-colors">
+                  {n.label}
+                </Link>
+              ) : (
+                <a key={n.label} href={n.href} className="text-sm font-medium hover:text-brand transition-colors">
+                  {n.label}
+                </a>
+              )
+            )}
           </nav>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
@@ -127,6 +136,14 @@ const Index = () => {
         <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-bl from-brand/20 via-brand/10 to-transparent blur-3xl" />
         <div className="container mx-auto relative grid lg:grid-cols-2 gap-10 items-center py-16 lg:py-24">
           <div className="animate-fade-in">
+            <Link
+              to="/etrn"
+              className="inline-flex items-center gap-2 bg-brand text-brand-dark text-xs font-bold px-4 py-2 rounded-full mb-6 hover:gap-3 transition-all"
+            >
+              <Icon name="Truck" size={14} />
+              ЭТрН обязательна с 1 сентября 2026 — поможем перейти
+              <Icon name="ArrowRight" size={14} />
+            </Link>
             <h1 className="font-display font-extrabold text-4xl md:text-6xl leading-[1.05]">
               Разработка решений на платформе{' '}
               <span className="gradient-text animate-gradient-x">1С:Предприятие</span>
@@ -168,6 +185,55 @@ const Index = () => {
               <span className="text-sm font-medium leading-tight">{a.title}</span>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* NEWS */}
+      <NewsScroller />
+
+      {/* ETRN HIGHLIGHT */}
+      <section className="container mx-auto py-20">
+        <div className="bg-brand-dark rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+          <div className="absolute -top-16 -right-16 w-64 h-64 bg-brand/20 blur-3xl rounded-full" />
+          <div className="relative grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-brand text-brand-dark text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide">
+                <Icon name="Truck" size={14} /> Новое требование
+              </span>
+              <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-5">
+                Специализируемся на <span className="text-brand">ЭТрН</span>
+              </h2>
+              <p className="text-white/70 mt-5 text-lg">
+                С 1 сентября 2026 года электронная транспортная накладная обязательна для всех перевозчиков.
+                Подключаем 1С к ГИС ЭПД, дорабатываем документы под новый формат и даём профессиональную
+                поддержку, которая ответит на все вопросы.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Button size="lg" className="rounded-full bg-brand text-brand-dark font-semibold text-base px-8 hover:opacity-90" asChild>
+                  <Link to="/etrn">
+                    Подробнее про ЭТрН <Icon name="ArrowRight" size={18} className="ml-1" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" onClick={() => setFormOpen(true)} className="rounded-full border-2 border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white font-semibold text-base px-8">
+                  Получить консультацию
+                </Button>
+              </div>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: 'PlugZap', t: 'Подключение к ГИС ЭПД', d: 'Настраиваем обмен через оператора ЭДО' },
+                { icon: 'FileCog', t: 'Доработка документов', d: 'Реквизиты и формы под формат ФНС' },
+                { icon: 'Workflow', t: 'Обмен титулами', d: 'Автоматическое подписание и статусы' },
+                { icon: 'Headset', t: 'Поддержка специалистов', d: 'Ответим на любые вопросы по обмену' },
+              ].map((c) => (
+                <div key={c.t} className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                  <Icon name={c.icon} size={22} className="text-brand" />
+                  <h3 className="font-display font-bold mt-4 leading-tight">{c.t}</h3>
+                  <p className="text-white/60 text-sm mt-1.5">{c.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -424,7 +490,13 @@ const Index = () => {
             <h4 className="font-display font-bold text-white mb-4">Навигация</h4>
             <ul className="space-y-2 text-sm">
               {nav.map((n) => (
-                <li key={n.label}><a href={n.href} className="hover:text-brand transition-colors">{n.label}</a></li>
+                <li key={n.label}>
+                  {n.href.startsWith('/') ? (
+                    <Link to={n.href} className="hover:text-brand transition-colors">{n.label}</Link>
+                  ) : (
+                    <a href={n.href} className="hover:text-brand transition-colors">{n.label}</a>
+                  )}
+                </li>
               ))}
             </ul>
           </div>

@@ -110,7 +110,10 @@ const Index = () => {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
               <Icon name="Phone" size={16} className="text-brand" />
-              <span className="font-display font-bold text-sm">+7 (926) 895-96-06</span>
+              <div className="flex flex-col leading-tight">
+                <a href="tel:+74952754450" className="font-display font-bold text-sm hover:text-brand transition-colors">+7 (495) 275-44-50</a>
+                <a href="tel:+79268959606" className="text-xs text-muted-foreground hover:text-brand transition-colors">+7 (926) 895-96-06</a>
+              </div>
             </div>
             <Button onClick={() => setFormOpen(true)} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
               Обсудить проект
@@ -392,7 +395,8 @@ const Index = () => {
             </form>
           )}
           <div className="mt-8 grid sm:grid-cols-2 gap-4 text-sm relative">
-            <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand" /> +7 (926) 895-96-06</div>
+            <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand" /> <a href="tel:+74952754450" className="hover:text-brand transition-colors">+7 (495) 275-44-50</a></div>
+            <div className="flex items-center gap-2"><Icon name="Smartphone" size={16} className="text-brand" /> <a href="tel:+79268959606" className="hover:text-brand transition-colors">+7 (926) 895-96-06</a></div>
             <div className="flex items-center gap-2"><Icon name="Mail" size={16} className="text-brand" /> info@proximum.ru</div>
             <div className="flex items-center gap-2"><Icon name="Send" size={16} className="text-brand" /> @proximum</div>
             <div className="flex items-center gap-2"><Icon name="MapPin" size={16} className="text-brand" /> г. Москва</div>
@@ -427,7 +431,8 @@ const Index = () => {
           <div>
             <h4 className="font-display font-bold text-white mb-4">Контакты</h4>
             <ul className="space-y-2 text-sm">
-              <li>+7 (926) 895-96-06</li>
+              <li><a href="tel:+74952754450" className="hover:text-brand transition-colors">+7 (495) 275-44-50</a></li>
+              <li><a href="tel:+79268959606" className="hover:text-brand transition-colors">+7 (926) 895-96-06</a></li>
               <li>info@proximum.ru</li>
               <li>@proximum</li>
               <li>г. Москва</li>

@@ -34,7 +34,10 @@ const BlogPost = () => {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
               <Icon name="Phone" size={16} className="text-brand" />
-              <span className="font-display font-bold text-sm">+7 (926) 895-96-06</span>
+              <div className="flex flex-col leading-tight">
+                <a href="tel:+74952754450" className="font-display font-bold text-sm hover:text-brand transition-colors">+7 (495) 275-44-50</a>
+                <a href="tel:+79268959606" className="text-xs text-muted-foreground hover:text-brand transition-colors">+7 (926) 895-96-06</a>
+              </div>
             </div>
             <Button onClick={() => setFormOpen(true)} className="rounded-full bg-brand text-brand-dark font-semibold hover:opacity-90 hidden sm:flex">
               Обсудить проект

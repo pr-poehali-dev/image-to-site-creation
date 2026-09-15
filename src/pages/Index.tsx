@@ -10,6 +10,8 @@ import { clients } from '@/data/clients';
 import LeadFormModal from '@/components/LeadFormModal';
 import NewsScroller from '@/components/NewsScroller';
 import ContactsModal from '@/components/ContactsModal';
+import StatsCounter from '@/components/StatsCounter';
+import Reveal from '@/components/Reveal';
 import { contacts } from '@/data/contacts';
 
 const HERO_IMG = '/hero-integrations.webp';
@@ -188,13 +190,16 @@ const Index = () => {
       {/* NEWS */}
       <NewsScroller />
 
+      {/* STATS */}
+      <StatsCounter />
+
       {/* ABOUT */}
       <section id="about" className="container mx-auto py-20 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="relative">
+        <Reveal direction="left" className="relative">
           <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-brand-graphite/20 blur-3xl rounded-full" />
           <img src={ABOUT_IMG} alt="О компании" className="relative rounded-3xl shadow-xl" />
-        </div>
-        <div>
+        </Reveal>
+        <Reveal direction="right" delay={100}>
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">О компании</span>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">
             Мы любим сложные задачи в <span className="gradient-text">1С</span>
@@ -243,7 +248,7 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* TRUSTED BY */}
@@ -282,11 +287,14 @@ const Index = () => {
       {/* SERVICES */}
       <section id="services" className="bg-muted/40">
         <div className="container mx-auto py-20">
-          <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши услуги</span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3 mb-12">Что мы умеем</h2>
+          <Reveal>
+            <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Наши услуги</span>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3 mb-12">Что мы умеем</h2>
+          </Reveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
-              <div key={s.title} onClick={() => setFormOpen(true)} className="group bg-white rounded-2xl p-7 border border-black/5 hover-lift cursor-pointer">
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={(i % 3) * 120}>
+              <div onClick={() => setFormOpen(true)} className="group bg-white rounded-2xl p-7 border border-black/5 hover-lift cursor-pointer h-full">
                 <div className="w-13 h-13 w-14 h-14 rounded-2xl bg-gradient-to-br from-brand/20 to-brand-graphite/20 flex items-center justify-center group-hover:from-brand group-hover:to-brand transition-all">
                   <Icon name={s.icon} size={26} className="text-brand group-hover:text-brand-dark transition-colors" />
                 </div>
@@ -296,6 +304,7 @@ const Index = () => {
                   Подробнее <Icon name="ArrowRight" size={15} />
                 </span>
               </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -304,7 +313,7 @@ const Index = () => {
       {/* PORTFOLIO */}
       <section id="portfolio" className="bg-brand-dark text-white">
         <div className="container mx-auto py-20">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+          <Reveal className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
               <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Портфолио</span>
               <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Реализованные проекты</h2>
@@ -314,16 +323,18 @@ const Index = () => {
                 Все проекты <Icon name="ArrowRight" size={16} className="ml-1" />
               </Link>
             </Button>
-          </div>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
-            {heroPortfolio.map((p) => (
-              <div key={p.title} className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-colors backdrop-blur-sm">
-                <span className="inline-block bg-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full">
-                  {p.tag}
-                </span>
-                <h3 className="font-display font-bold text-xl mt-5">{p.title}</h3>
-                <p className="text-white/60 mt-3">{p.text}</p>
-              </div>
+            {heroPortfolio.map((p, i) => (
+              <Reveal key={p.title} delay={i * 120}>
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-colors backdrop-blur-sm h-full">
+                  <span className="inline-block bg-brand text-brand-dark text-xs font-bold px-3 py-1 rounded-full">
+                    {p.tag}
+                  </span>
+                  <h3 className="font-display font-bold text-xl mt-5">{p.title}</h3>
+                  <p className="text-white/60 mt-3">{p.text}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -333,8 +344,8 @@ const Index = () => {
       <section className="container mx-auto py-20">
         <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Почему выбирают нас</span>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-          {why.map((w) => (
-            <div key={w.title} className="flex gap-4">
+          {why.map((w, i) => (
+            <Reveal key={w.title} delay={(i % 3) * 120} className="flex gap-4">
               <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand/15 to-brand-graphite/15 flex items-center justify-center shrink-0">
                 <Icon name={w.icon} size={20} className="text-brand" />
               </div>
@@ -342,7 +353,7 @@ const Index = () => {
                 <h3 className="font-display font-bold">{w.title}</h3>
                 <p className="text-muted-foreground text-sm mt-1">{w.text}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -352,14 +363,14 @@ const Index = () => {
         <div className="container mx-auto py-20">
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Как мы работаем</span>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-10">
-            {steps.map((s) => (
-              <div key={s.n} className="relative">
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 90} className="relative">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand to-brand flex items-center justify-center font-display font-extrabold text-brand-dark text-lg mb-4">
                   {s.n}
                 </div>
                 <h3 className="font-display font-bold">{s.title}</h3>
                 <p className="text-muted-foreground text-sm mt-1">{s.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -367,7 +378,7 @@ const Index = () => {
 
       {/* BLOG + CONTACT FORM */}
       <section id="blog" className="container mx-auto py-20 grid lg:grid-cols-2 gap-12">
-        <div>
+        <Reveal direction="left">
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Блог</span>
           <h2 className="font-display font-extrabold text-3xl mt-3 mb-8">Полезные статьи</h2>
           <div className="space-y-4">
@@ -383,10 +394,10 @@ const Index = () => {
               </Link>
             ))}
           </div>
-        </div>
+        </Reveal>
 
         {/* FORM */}
-        <div id="contacts" className="bg-brand-dark rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
+        <Reveal direction="right" delay={100} id="contacts" className="bg-brand-dark rounded-3xl p-8 md:p-10 text-white relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand/20 blur-3xl rounded-full" />
           <h2 className="font-display font-extrabold text-3xl relative">Есть проект? Давайте обсудим</h2>
           <p className="text-white/60 mt-3 relative">Заполните форму, и мы свяжемся с вами в ближайшее время.</p>
@@ -421,7 +432,7 @@ const Index = () => {
           <button onClick={() => setContactsOpen(true)} className="mt-5 inline-flex items-center gap-1.5 text-brand font-semibold text-sm hover:gap-2.5 transition-all relative">
             Все контакты и карта <Icon name="ArrowRight" size={15} />
           </button>
-        </div>
+        </Reveal>
       </section>
 
       {/* FOOTER */}

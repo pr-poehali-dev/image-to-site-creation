@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import LeadFormModal from '@/components/LeadFormModal';
+import ContactsModal from '@/components/ContactsModal';
 
 const facts = [
   { icon: 'CalendarCheck', title: 'С 1 сентября 2026', text: 'Электронная транспортная накладная обязательна для всех перевозчиков' },
@@ -87,6 +88,7 @@ const faq = [
 
 const Etrn = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const [contactsOpen, setContactsOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
@@ -105,7 +107,7 @@ const Etrn = () => {
             <Link to="/etrn" className="text-sm font-medium text-brand transition-colors">ЭТрН</Link>
             <Link to="/portfolio" className="text-sm font-medium hover:text-brand transition-colors">Проекты</Link>
             <Link to="/clients" className="text-sm font-medium hover:text-brand transition-colors">Клиенты</Link>
-            <a href="/#contacts" className="text-sm font-medium hover:text-brand transition-colors">Контакты</a>
+            <button onClick={() => setContactsOpen(true)} className="text-sm font-medium hover:text-brand transition-colors">Контакты</button>
           </nav>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
@@ -335,6 +337,7 @@ const Etrn = () => {
       </footer>
 
       <LeadFormModal open={formOpen} onOpenChange={setFormOpen} />
+      <ContactsModal open={contactsOpen} onOpenChange={setContactsOpen} />
     </div>
   );
 };

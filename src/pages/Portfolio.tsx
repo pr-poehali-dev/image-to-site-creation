@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { portfolio } from '@/data/portfolio';
 import LeadFormModal from '@/components/LeadFormModal';
+import ContactsModal from '@/components/ContactsModal';
 
 const Portfolio = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const [contactsOpen, setContactsOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background text-brand-dark font-sans overflow-x-hidden">
@@ -22,7 +24,7 @@ const Portfolio = () => {
           <nav className="hidden lg:flex items-center gap-7">
             <Link to="/" className="text-sm font-medium hover:text-brand transition-colors">Главная</Link>
             <Link to="/portfolio" className="text-sm font-medium text-brand transition-colors">Проекты</Link>
-            <a href="/#contacts" className="text-sm font-medium hover:text-brand transition-colors">Контакты</a>
+            <button onClick={() => setContactsOpen(true)} className="text-sm font-medium hover:text-brand transition-colors">Контакты</button>
           </nav>
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-2">
@@ -104,6 +106,7 @@ const Portfolio = () => {
       </footer>
 
       <LeadFormModal open={formOpen} onOpenChange={setFormOpen} />
+      <ContactsModal open={contactsOpen} onOpenChange={setContactsOpen} />
     </div>
   );
 };

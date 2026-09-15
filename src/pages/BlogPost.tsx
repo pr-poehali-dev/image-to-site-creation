@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { blogPosts } from '@/data/blog';
 import LeadFormModal from '@/components/LeadFormModal';
+import ContactsModal from '@/components/ContactsModal';
 
 const BlogPost = () => {
   const { slug } = useParams();
   const [formOpen, setFormOpen] = useState(false);
+  const [contactsOpen, setContactsOpen] = useState(false);
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) return <Navigate to="/" replace />;
@@ -134,6 +136,7 @@ const BlogPost = () => {
       </footer>
 
       <LeadFormModal open={formOpen} onOpenChange={setFormOpen} />
+      <ContactsModal open={contactsOpen} onOpenChange={setContactsOpen} />
     </div>
   );
 };

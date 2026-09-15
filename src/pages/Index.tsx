@@ -9,6 +9,8 @@ import { blogPosts } from '@/data/blog';
 import { clients } from '@/data/clients';
 import LeadFormModal from '@/components/LeadFormModal';
 import NewsScroller from '@/components/NewsScroller';
+import ContactsModal from '@/components/ContactsModal';
+import { contacts } from '@/data/contacts';
 
 const HERO_IMG = '/hero-integrations.webp';
 const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
@@ -68,6 +70,7 @@ const Index = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [formOpen, setFormOpen] = useState(false);
+  const [contactsOpen, setContactsOpen] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -407,10 +410,13 @@ const Index = () => {
           <div className="mt-8 grid sm:grid-cols-2 gap-4 text-sm relative">
             <div className="flex items-center gap-2"><Icon name="Phone" size={16} className="text-brand" /> <a href="tel:+74952754450" className="hover:text-brand transition-colors">+7 (495) 275-44-50</a></div>
             <div className="flex items-center gap-2"><Icon name="Smartphone" size={16} className="text-brand" /> <a href="tel:+79268959606" className="hover:text-brand transition-colors">+7 (926) 895-96-06</a></div>
-            <div className="flex items-center gap-2"><Icon name="Mail" size={16} className="text-brand" /> info@proximum.ru</div>
-            <div className="flex items-center gap-2"><Icon name="Send" size={16} className="text-brand" /> @proximum</div>
-            <div className="flex items-center gap-2"><Icon name="MapPin" size={16} className="text-brand" /> г. Москва</div>
+            <div className="flex items-center gap-2"><Icon name="Mail" size={16} className="text-brand" /> <a href={contacts.email.href} className="hover:text-brand transition-colors">{contacts.email.label}</a></div>
+            <div className="flex items-center gap-2"><Icon name="Send" size={16} className="text-brand" /> <a href={contacts.telegram.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">{contacts.telegram.label}</a></div>
+            <div className="flex items-center gap-2 sm:col-span-2"><Icon name="MapPin" size={16} className="text-brand shrink-0" /> {contacts.address.short}</div>
           </div>
+          <button onClick={() => setContactsOpen(true)} className="mt-5 inline-flex items-center gap-1.5 text-brand font-semibold text-sm hover:gap-2.5 transition-all relative">
+            Все контакты и карта <Icon name="ArrowRight" size={15} />
+          </button>
         </div>
       </section>
 
@@ -423,9 +429,13 @@ const Index = () => {
             </span>
             <p className="text-sm mt-3 max-w-xs">Разработка, доработка и сопровождение решений на платформе 1С:Предприятие. Решаем задачи любой сложности.</p>
             <div className="flex gap-3 mt-5">
-              {['Send', 'MessageCircle', 'Youtube'].map((i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange hover:text-brand-dark transition-colors">
-                  <Icon name={i} size={18} />
+              {[
+                { icon: 'Send', href: contacts.telegram.href, label: 'Telegram' },
+                { icon: 'Mail', href: contacts.email.href, label: 'Почта' },
+                { icon: 'Phone', href: contacts.phoneMain.href, label: 'Телефон' },
+              ].map((s) => (
+                <a key={s.icon} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" aria-label={s.label} className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange hover:text-brand-dark transition-colors">
+                  <Icon name={s.icon} size={18} />
                 </a>
               ))}
             </div>
@@ -435,7 +445,9 @@ const Index = () => {
             <ul className="space-y-2 text-sm">
               {nav.map((n) => (
                 <li key={n.label}>
-                  {n.href.startsWith('/') ? (
+                  {n.label === 'Контакты' ? (
+                    <button onClick={() => setContactsOpen(true)} className="hover:text-brand transition-colors">{n.label}</button>
+                  ) : n.href.startsWith('/') ? (
                     <Link to={n.href} className="hover:text-brand transition-colors">{n.label}</Link>
                   ) : (
                     <a href={n.href} className="hover:text-brand transition-colors">{n.label}</a>
@@ -447,12 +459,15 @@ const Index = () => {
           <div>
             <h4 className="font-display font-bold text-white mb-4">Контакты</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="tel:+74952754450" className="hover:text-brand transition-colors">+7 (495) 275-44-50</a></li>
-              <li><a href="tel:+79268959606" className="hover:text-brand transition-colors">+7 (926) 895-96-06</a></li>
-              <li>info@proximum.ru</li>
-              <li>@proximum</li>
-              <li>г. Москва</li>
+              <li><a href={contacts.phoneMain.href} className="hover:text-brand transition-colors">{contacts.phoneMain.label}</a></li>
+              <li><a href={contacts.phoneMobile.href} className="hover:text-brand transition-colors">{contacts.phoneMobile.label}</a></li>
+              <li><a href={contacts.email.href} className="hover:text-brand transition-colors">{contacts.email.label}</a></li>
+              <li><a href={contacts.telegram.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">{contacts.telegram.label}</a></li>
+              <li>{contacts.address.short}</li>
             </ul>
+            <button onClick={() => setContactsOpen(true)} className="mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-sm hover:gap-2.5 transition-all">
+              Все контакты и карта <Icon name="ArrowRight" size={15} />
+            </button>
           </div>
         </div>
         <div className="border-t border-white/10">
@@ -467,6 +482,7 @@ const Index = () => {
       </footer>
 
       <LeadFormModal open={formOpen} onOpenChange={setFormOpen} />
+      <ContactsModal open={contactsOpen} onOpenChange={setContactsOpen} />
     </div>
   );
 };

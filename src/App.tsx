@@ -11,6 +11,7 @@ import Etrn from "./pages/Etrn";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingContact from "./components/FloatingContact";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <FloatingContact />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

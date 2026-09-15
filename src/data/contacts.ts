@@ -4,6 +4,12 @@ export const contacts = {
   email: { label: 'help@itproximum.ru', href: 'mailto:help@itproximum.ru', note: 'Поддержка и вопросы' },
   telegram: { label: '@VasiliiEremin', href: 'https://t.me/VasiliiEremin', note: 'Telegram' },
   site: { label: 'itproximum.ru', href: 'https://itproximum.ru', note: 'Наш сайт' },
+  schedule: {
+    days: 'Пн — Пт',
+    hours: '9:00 — 18:00',
+    weekend: 'Сб, Вс — выходной',
+    note: 'Заявки принимаем круглосуточно',
+  },
   address: {
     label: 'Московская область, г. Балашиха, ул. Советская, д. 19Е, кабинет 6',
     short: 'г. Балашиха, ул. Советская, 19Е',

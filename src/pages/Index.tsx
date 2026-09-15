@@ -468,6 +468,7 @@ const Index = () => {
               <li><a href={contacts.email.href} className="hover:text-brand transition-colors">{contacts.email.label}</a></li>
               <li><a href={contacts.telegram.href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors">{contacts.telegram.label}</a></li>
               <li>{contacts.address.short}</li>
+              <li className="text-white/50">{contacts.schedule.days} {contacts.schedule.hours}</li>
             </ul>
             <button onClick={() => setContactsOpen(true)} className="mt-4 inline-flex items-center gap-1.5 text-brand font-semibold text-sm hover:gap-2.5 transition-all">
               Все контакты и карта <Icon name="ArrowRight" size={15} />

@@ -15,10 +15,18 @@ const rows = [
   { icon: 'Globe', ...contacts.site, external: true },
 ];
 
+const isOfficeOpen = () => {
+  const now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }));
+  const day = now.getDay();
+  const hour = now.getHours();
+  return day >= 1 && day <= 5 && hour >= 9 && hour < 18;
+};
+
 const ContactsModal = ({ open, onOpenChange }: ContactsModalProps) => {
   const mapSrc = `https://yandex.ru/map-widget/v1/?text=${encodeURIComponent(
     contacts.address.mapQuery
   )}&z=17`;
+  const openNow = isOfficeOpen();
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -30,6 +38,21 @@ const ContactsModal = ({ open, onOpenChange }: ContactsModalProps) => {
             Свяжитесь удобным способом — ответим в рабочее время.
           </DialogDescription>
         </DialogHeader>
+
+        <div className="relative flex flex-wrap items-center gap-x-4 gap-y-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3">
+          <span className="flex items-center gap-2 shrink-0">
+            <span className="relative flex h-2.5 w-2.5">
+              {openNow && <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />}
+              <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${openNow ? 'bg-green-400' : 'bg-white/30'}`} />
+            </span>
+            <span className="font-display font-bold text-sm">{openNow ? 'Сейчас работаем' : 'Сейчас нерабочее время'}</span>
+          </span>
+          <span className="flex items-center gap-1.5 text-sm text-white/70">
+            <Icon name="Clock" size={15} className="text-brand" />
+            {contacts.schedule.days} {contacts.schedule.hours}
+          </span>
+          <span className="text-xs text-white/40">{contacts.schedule.note}</span>
+        </div>
 
         <div className="relative grid sm:grid-cols-2 gap-5">
           <div className="space-y-2">

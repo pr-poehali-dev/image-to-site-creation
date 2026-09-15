@@ -106,7 +106,11 @@ const Index = () => {
           </a>
           <nav className="hidden lg:flex items-center gap-7">
             {nav.map((n) =>
-              n.href.startsWith('/') ? (
+              n.label === 'Контакты' ? (
+                <button key={n.label} onClick={() => setContactsOpen(true)} className="text-sm font-medium hover:text-brand transition-colors">
+                  {n.label}
+                </button>
+              ) : n.href.startsWith('/') ? (
                 <Link key={n.label} to={n.href} className="text-sm font-medium hover:text-brand transition-colors">
                   {n.label}
                 </Link>

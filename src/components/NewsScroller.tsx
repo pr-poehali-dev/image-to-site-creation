@@ -15,11 +15,7 @@ const NewsScroller = () => {
       <div className="container mx-auto py-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">Последние новости</span>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">Что меняется в законодательстве</h2>
-            <p className="text-muted-foreground mt-3 max-w-xl">
-              Следим за изменениями и заранее готовим ваши базы 1С к новым требованиям.
-            </p>
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl">Последние новости</h2>
           </div>
           <div className="flex gap-2 shrink-0">
             <button
@@ -73,14 +69,22 @@ const NewsScroller = () => {
                 <span className={`text-xs flex items-center gap-1.5 ${n.hot ? 'text-white/50' : 'text-muted-foreground'}`}>
                   <Icon name="Calendar" size={13} /> {n.date}
                 </span>
-                {n.link && (
-                  <Link
-                    to={n.link}
-                    className="inline-flex items-center gap-1 text-brand font-semibold text-sm hover:gap-2 transition-all shrink-0"
-                  >
-                    {n.linkLabel ?? 'Подробнее'} <Icon name="ArrowRight" size={15} />
-                  </Link>
-                )}
+                {n.link &&
+                  (n.link.startsWith('/') ? (
+                    <Link
+                      to={n.link}
+                      className="inline-flex items-center gap-1 text-brand font-semibold text-sm hover:gap-2 transition-all shrink-0"
+                    >
+                      {n.linkLabel ?? 'Подробнее'} <Icon name="ArrowRight" size={15} />
+                    </Link>
+                  ) : (
+                    <a
+                      href={n.link}
+                      className="inline-flex items-center gap-1 text-brand font-semibold text-sm hover:gap-2 transition-all shrink-0"
+                    >
+                      {n.linkLabel ?? 'Подробнее'} <Icon name="ArrowRight" size={15} />
+                    </a>
+                  ))}
               </div>
             </article>
           ))}

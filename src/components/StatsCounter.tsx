@@ -9,10 +9,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: 12, suffix: '+', label: 'лет на рынке 1С', icon: 'CalendarDays' },
-  { value: 150, suffix: '+', label: 'реализованных проектов', icon: 'CheckCircle2' },
-  { value: 60, suffix: '+', label: 'постоянных клиентов', icon: 'Users' },
-  { value: 24, suffix: 'ч', label: 'реакция на обращение', icon: 'Timer' },
+  { value: 2, suffix: ' года', label: 'на рынке 1С', icon: 'CalendarDays' },
+  { value: 40, suffix: '+', label: 'реализованных проектов', icon: 'CheckCircle2' },
+  { value: 8, label: 'постоянных клиентов', icon: 'Users' },
+  { value: 1, suffix: 'ч', label: 'реакция на обращение', icon: 'Timer' },
 ];
 
 const useCountUp = (target: number, start: boolean, duration = 1600) => {
@@ -55,7 +55,9 @@ const StatItem = ({ stat, active, delay }: { stat: Stat; active: boolean; delay:
       </div>
       <div className="font-display font-extrabold text-4xl md:text-5xl mt-5 tabular-nums">
         {value}
-        <span className="text-brand">{stat.suffix}</span>
+        <span className={`text-brand ${stat.suffix && stat.suffix.length > 2 ? 'text-2xl md:text-3xl' : ''}`}>
+          {stat.suffix}
+        </span>
       </div>
       <p className="text-white/60 text-sm mt-2">{stat.label}</p>
     </div>

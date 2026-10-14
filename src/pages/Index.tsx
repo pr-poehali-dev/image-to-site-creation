@@ -17,7 +17,8 @@ import Reveal from '@/components/Reveal';
 import { contacts } from '@/data/contacts';
 
 const HERO_IMG = '/hero-integrations.webp';
-const ABOUT_IMG = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/files/7ae2301a-835c-4fe8-91d3-82ba5a2a9a80.jpg';
+const FOUNDER_PORTRAIT = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/3180cadb-c79b-4917-b6fa-7cfa4c713162.png';
+const FOUNDER_SPEAKING = 'https://cdn.poehali.dev/projects/1455fd36-fbcb-4859-af00-cd1d6a6e2240/bucket/06b2be91-2abe-40b2-9a23-13d400b6b8a4.png';
 
 const nav = [
   { label: 'О компании', href: '#about' },
@@ -200,23 +201,50 @@ const Index = () => {
 
       {/* ABOUT */}
       <section id="about" className="container mx-auto py-20 grid lg:grid-cols-2 gap-12 items-center">
-        <Reveal direction="left" className="relative">
+        <Reveal direction="left" className="relative lg:sticky lg:top-24 self-start">
           <div className="absolute inset-0 bg-gradient-to-tr from-brand/20 to-brand-graphite/20 blur-3xl rounded-full" />
-          <img src={ABOUT_IMG} alt="О компании" className="relative rounded-3xl shadow-xl" />
+          <div className="relative rounded-3xl overflow-hidden shadow-xl bg-brand-dark">
+            <img src={FOUNDER_PORTRAIT} alt="Василий Еремин" className="w-full aspect-[4/5] object-cover object-[70%_center]" />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-dark/90 to-transparent p-6 pt-16">
+              <p className="font-display font-extrabold text-xl text-white">Василий Еремин</p>
+              <p className="text-white/70 text-sm">Основатель PROximum, 1С-разработчик</p>
+            </div>
+          </div>
+          <div className="relative -mt-10 ml-auto mr-4 w-40 sm:w-48 rounded-2xl overflow-hidden border-4 border-background shadow-xl rotate-2">
+            <img src={FOUNDER_SPEAKING} alt="Василий на конференции Stepicon 2025" className="w-full aspect-square object-cover" />
+          </div>
+          <p className="text-xs text-muted-foreground text-right mr-4 mt-2">На конференции Stepicon 2025</p>
         </Reveal>
         <Reveal direction="right" delay={100}>
           <span className="text-brand font-display font-bold text-sm tracking-widest uppercase">О компании</span>
           <h2 className="font-display font-extrabold text-3xl md:text-4xl mt-3">
-            Мы любим сложные задачи в <span className="gradient-text">1С</span>
+            Привет, я Василий. И я люблю <span className="gradient-text">1С</span>
           </h2>
           <p className="mt-5 text-muted-foreground text-lg">
-            Именно поэтому нам интересно не просто писать код, а создавать решения, которые делают работу компаний быстрее и удобнее.
+            Много лет я занимаюсь 1С: дорабатываю программы, обучаю людей и помогаю бизнесу выжимать из системы максимум. PROximum — это моя команда, которая глубоко погружается в задачи клиента и предлагает оптимальные решения.
           </p>
           <p className="mt-4 text-muted-foreground text-lg">
-            PROximum — это команда разработчиков, которая глубоко погружается в задачи клиента и предлагает оптимальные технические решения.
+            Для меня хорошая доработка — это не просто «работает», а когда сотрудникам удобно пользоваться ей каждый день и они не звонят в поддержку.
           </p>
 
-          <div className="mt-6 bg-white border border-black/5 rounded-2xl p-6 flex gap-4 items-start hover-lift">
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            <div className="bg-white border border-black/5 rounded-2xl p-5 hover-lift">
+              <div className="w-11 h-11 rounded-xl bg-brand flex items-center justify-center">
+                <Icon name="Code" size={20} className="text-brand-dark" />
+              </div>
+              <h3 className="font-display font-bold text-base mt-3">Доработка программ на 1С</h3>
+              <p className="text-muted-foreground text-sm mt-1.5">Дорабатываем и развиваем решения на платформе 1С под процессы вашей компании.</p>
+            </div>
+            <div className="bg-white border border-black/5 rounded-2xl p-5 hover-lift">
+              <div className="w-11 h-11 rounded-xl bg-brand flex items-center justify-center">
+                <Icon name="GraduationCap" size={20} className="text-brand-dark" />
+              </div>
+              <h3 className="font-display font-bold text-base mt-3">Обучение специалистов</h3>
+              <p className="text-muted-foreground text-sm mt-1.5">Учим 1С-разработчиков, пользователей и аналитиков — от основ до практики на реальных задачах.</p>
+            </div>
+          </div>
+
+          <div className="mt-4 bg-white border border-black/5 rounded-2xl p-6 flex gap-4 items-start hover-lift">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand to-brand flex items-center justify-center shrink-0">
               <Icon name="Users" size={22} className="text-brand-dark" />
             </div>

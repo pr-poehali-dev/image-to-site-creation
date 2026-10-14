@@ -103,6 +103,10 @@ export default {
 				'gradient-x': {
 					'0%, 100%': { backgroundPosition: '0% 50%' },
 					'50%': { backgroundPosition: '100% 50%' }
+				},
+				'marquee': {
+					from: { transform: 'translateX(0)' },
+					to: { transform: 'translateX(-50%)' }
 				}
 			},
 			animation: {
@@ -111,7 +115,8 @@ export default {
 				'fade-in': 'fade-in 0.7s ease-out forwards',
 				'scale-in': 'scale-in 0.5s ease-out forwards',
 				'float': 'float 6s ease-in-out infinite',
-				'gradient-x': 'gradient-x 6s ease infinite'
+				'gradient-x': 'gradient-x 6s ease infinite',
+				'marquee': 'marquee var(--marquee-duration, 40s) linear infinite'
 			}
 		}
 	},

@@ -10,6 +10,8 @@ import LeadFormModal from '@/components/LeadFormModal';
 import NewsScroller from '@/components/NewsScroller';
 import ContactsModal from '@/components/ContactsModal';
 import ClientsMarquee from '@/components/ClientsMarquee';
+import ConsentCheckbox from '@/components/ConsentCheckbox';
+import { legal } from '@/data/legal';
 import StatsCounter from '@/components/StatsCounter';
 import Reveal from '@/components/Reveal';
 import { contacts } from '@/data/contacts';
@@ -71,11 +73,13 @@ const Index = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [agreed, setAgreed] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [contactsOpen, setContactsOpen] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!agreed) return;
     setLoading(true);
     setError('');
     try {
@@ -87,6 +91,7 @@ const Index = () => {
       if (!res.ok) throw new Error('Ошибка отправки');
       setSent(true);
       setForm({ name: '', contact: '', task: '' });
+      setAgreed(false);
       setTimeout(() => setSent(false), 5000);
     } catch {
       setError('Не удалось отправить заявку. Попробуйте ещё раз.');
@@ -401,8 +406,9 @@ const Index = () => {
                 <Input required value={form.contact} onChange={(e) => setForm({ ...form, contact: e.target.value })} placeholder="Телефон или Telegram" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl h-12" />
               </div>
               <Textarea value={form.task} onChange={(e) => setForm({ ...form, task: e.target.value })} placeholder="Опишите задачу" rows={4} className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl" />
+              <ConsentCheckbox checked={agreed} onChange={setAgreed} />
               {error && <p className="text-red-400 text-sm">{error}</p>}
-              <Button type="submit" disabled={loading} size="lg" className="w-full rounded-xl bg-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
+              <Button type="submit" disabled={loading || !agreed} size="lg" className="w-full rounded-xl bg-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
                 {loading ? 'Отправляем...' : <><span>Отправить заявку</span><Icon name="Send" size={18} className="ml-1" /></>}
               </Button>
             </form>
@@ -473,10 +479,10 @@ const Index = () => {
         </div>
         <div className="border-t border-white/10">
           <div className="container mx-auto py-5 flex flex-col sm:flex-row justify-between gap-2 text-xs">
-            <span>© 2026 PROximum. Все права защищены.</span>
+            <span>© 2026 PROximum · {legal.ownerShort} · ИНН {legal.inn} · ОГРНИП {legal.ogrnip}</span>
             <div className="flex gap-5">
-              <a href="#" className="hover:text-brand">Политика конфиденциальности</a>
-              <a href="#" className="hover:text-brand">Публичная оферта</a>
+              <Link to="/privacy" className="hover:text-brand">Политика конфиденциальности</Link>
+              <Link to="/consent" className="hover:text-brand">Согласие на обработку данных</Link>
             </div>
           </div>
         </div>

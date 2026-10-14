@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import ConsentCheckbox from '@/components/ConsentCheckbox';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/c535fbbd-9be9-46d7-9689-055762068c77';
 
@@ -17,9 +18,11 @@ const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [agreed, setAgreed] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!agreed) return;
     setLoading(true);
     setError('');
     try {
@@ -31,6 +34,7 @@ const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
       if (!res.ok) throw new Error('Ошибка отправки');
       setSent(true);
       setForm({ name: '', contact: '', task: '' });
+      setAgreed(false);
       setTimeout(() => {
         setSent(false);
         onOpenChange(false);
@@ -65,8 +69,9 @@ const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
             <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Ваше имя" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl h-12" />
             <Input required value={form.contact} onChange={(e) => setForm({ ...form, contact: e.target.value })} placeholder="Телефон или Telegram" className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl h-12" />
             <Textarea value={form.task} onChange={(e) => setForm({ ...form, task: e.target.value })} placeholder="Опишите задачу" rows={4} className="bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-xl" />
+            <ConsentCheckbox checked={agreed} onChange={setAgreed} />
             {error && <p className="text-red-400 text-sm">{error}</p>}
-            <Button type="submit" disabled={loading} size="lg" className="w-full rounded-xl bg-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
+            <Button type="submit" disabled={loading || !agreed} size="lg" className="w-full rounded-xl bg-brand text-brand-dark font-bold text-base hover:opacity-90 disabled:opacity-60">
               {loading ? 'Отправляем...' : <><span>Отправить заявку</span><Icon name="Send" size={18} className="ml-1" /></>}
             </Button>
           </form>

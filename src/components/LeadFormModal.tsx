@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import ConsentCheckbox from '@/components/ConsentCheckbox';
+import { reachGoal } from '@/lib/analytics';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/c535fbbd-9be9-46d7-9689-055762068c77';
 
@@ -32,6 +33,7 @@ const LeadFormModal = ({ open, onOpenChange }: LeadFormModalProps) => {
         body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error('Ошибка отправки');
+      reachGoal('lead_submit');
       setSent(true);
       setForm({ name: '', contact: '', task: '' });
       setAgreed(false);
